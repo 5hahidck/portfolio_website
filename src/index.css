@@ -28,6 +28,11 @@ body {
   touch-action: pan-y;
 }
 
+canvas {
+  pointer-events: none !important;
+  touch-action: auto !important;
+}
+
 /* Base styles for outlined boxes */
 .outline-box {
   border: var(--border-width) solid var(--border-color);

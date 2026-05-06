@@ -41,6 +41,13 @@ export const PhysicsProvider = ({ children }) => {
       }
     });
 
+    // ADD THESE LINES TO FIX SCROLLING AND CLICKS ON MOBILE:
+    mouseConstraint.mouse.element.removeEventListener("mousewheel", mouseConstraint.mouse.mousewheel);
+    mouseConstraint.mouse.element.removeEventListener("DOMMouseScroll", mouseConstraint.mouse.mousewheel);
+    mouseConstraint.mouse.element.removeEventListener("touchmove", mouseConstraint.mouse.mousemove);
+    mouseConstraint.mouse.element.removeEventListener("touchstart", mouseConstraint.mouse.mousedown);
+    mouseConstraint.mouse.element.removeEventListener("touchend", mouseConstraint.mouse.mouseup);
+
     Matter.Composite.add(engine.world, mouseConstraint);
 
     // Keep the mouse in sync with rendering
