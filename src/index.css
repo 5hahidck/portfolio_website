@@ -25,6 +25,7 @@ body {
   min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
   overflow: hidden;
+  touch-action: pan-y;
 }
 
 /* Base styles for outlined boxes */
@@ -46,6 +47,7 @@ button {
   top: 0;
   left: 0;
   will-change: transform;
+  transform: translateZ(0); /* Hardware acceleration */
   /* Keep normal document flow layout off if it's absolute, but we manage this via inline styles */
 }
 

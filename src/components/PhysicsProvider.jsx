@@ -24,6 +24,13 @@ export const PhysicsProvider = ({ children }) => {
 
     // We don't necessarily need a Render, but we need a Mouse instance attached to the document for dragging
     const mouse = Matter.Mouse.create(document.body);
+    
+    // Fix Matter.js blocking mobile scroll and clicks
+    mouse.element.style.touchAction = 'pan-y'; // Allow vertical scrolling
+    
+    // Optional: completely remove mousewheel event listeners so scroll isn't hijacked
+    mouse.element.removeEventListener('mousewheel', mouse.mousewheel);
+    mouse.element.removeEventListener('DOMMouseScroll', mouse.mousewheel);
     const mouseConstraint = Matter.MouseConstraint.create(engine, {
       mouse: mouse,
       constraint: {
